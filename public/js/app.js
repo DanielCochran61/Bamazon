@@ -3,7 +3,7 @@ $(document).ready(function () {
     let isFillOrder = true;
     let totalPrice = 0;
     const render = function (products) {
-        $('#productDetails').empty();
+        $('#product-details').empty();
         for (let i = 0; i < products.length; i++) {
             const productRow = $('<tr>').addClass('productRow');
             const qtyCol = $('<th>');
@@ -16,7 +16,7 @@ $(document).ready(function () {
             priceCol.text(`${products[i].price}`);
             productRow.append(priceCol);
             const avilQtyCol = $('<td>');
-            avilQtyCol.text(`${products[i].quantity}`);
+            avilQtyCol.text(`${products[i].avail_quantity}`);
             productRow.append(avilQtyCol);
             const cartCol = $('<td>');
             const cartButton = $('<button>').addClass('btn btn-warning cart');
@@ -25,7 +25,7 @@ $(document).ready(function () {
             cartButton.text('Add to Cart');
             cartCol.append(cartButton);
             productRow.append(cartCol);
-            $('#productDetails').append(productRow);
+            $('#product-details').append(productRow);
         }
     }
     const getAllProducts = function () {
@@ -37,7 +37,6 @@ $(document).ready(function () {
         });
     }
     getAllProducts();
-
     const calculateTotal = function (price) {
         totalPrice += parseInt(price);
     }
@@ -77,9 +76,9 @@ $(document).ready(function () {
         setIsFillOrder(true);
     }
     const displayMessage = function () {
-        $('#poResults').removeClass('alert alert-danger');
-        $('#poResults').addClass('alert alert-info');
-        $('#poResults').text(`Thank you for your order! Your total is $${totalPrice}!`);
+        $('#po-results').removeClass('alert alert-danger');
+        $('#po-results').addClass('alert alert-info');
+        $('#po-results').text(`Thank you for your order! Your order total is $${totalPrice}!`);
         resetPurchaseOrder();
     }
     const validateOrder = function (e) {
@@ -88,23 +87,23 @@ $(document).ready(function () {
             fillOrder();
             setTimeout(displayMessage, 500);
         } else {
-            $('#poResults').removeClass('alert alert-info');
-            $('#poResults').addClass('alert alert-danger');
-            $('#poResults').text('Insufficient quantity!');
+            $('#po-results').removeClass('alert alert-info');
+            $('#po-results').addClass('alert alert-danger');
+            $('#po-results').text('Insufficient quantity!');
             resetPurchaseOrder();
         }
     }
     const clearMessage = function () {
-        $('#poResults').removeClass('alert alert-info');
-        $('#poResults').removeClass('alert alert-danger');
-        $('#poResults').text('');
+        $('#po-results').removeClass('alert alert-info');
+        $('#po-results').removeClass('alert alert-danger');
+        $('#po-results').text('');
     }
     const viewCart = function (e) {
         e.preventDefault();
-        $('#purchaseOrder').empty();
+        $('#purchase-order').empty();
         clearMessage();
         for (let i = 0; i < purchaseOrder.length; i++) {
-            $('#purchaseOrder').append(`<tr>
+            $('#purchase-order').append(`<tr>
         <th scope="row">${i + 1}</th>
         <td>${purchaseOrder[i].qty}</td>
         <td>${purchaseOrder[i].item}</td>
@@ -161,9 +160,11 @@ $(document).ready(function () {
         const cartVal = $(this).attr('cart-name');
         const qtyRow = `qtyRow${cartVal.substring(4)}`;
         const qtyVal = $(`#${qtyRow}`).val();
+
         addCartItem(productId, qtyVal);
     }
+
     $(this).on('click', '.cart', addToCart);
-    $('#viewCart').on('click', viewCart);
-    $('#placeOrder').on('click', validateOrder);
+    $('#view-cart').on('click', viewCart);
+    $('#place-order').on('click', validateOrder);
 });

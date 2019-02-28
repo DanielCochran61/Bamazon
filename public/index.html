@@ -21,27 +21,26 @@
             </div>
         </div>
         <form class="form-inline">
-            <button type="button" class="btn btn-outline-info my-2 my-sm-0" id="viewCart" data-toggle="modal"
+            <button type="button" class="btn btn-outline-info my-2 my-sm-0" id="view-cart" data-toggle="modal"
                 data-target="#cart-modal">View Cart</button>
         </form>
     </nav>
-    <div id="poResults"></div>
+    <div id="po-results"></div>
     <div class="container">
         <br>
         <table class="table">
             <thead class="bg-info">
                 <tr>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">Qty</th>
                     <th scope="col">Product</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Available Quantity</th>
+                    <th scope="col">Available Qty</th>
                 </tr>
             </thead>
-            <tbody id="productDetails">
+            <tbody id="product-details">
             </tbody>
         </table>
     </div>
-
     <div id="cart-modal" class="modal fade" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -60,12 +59,12 @@
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
-                        <tbody id="purchaseOrder">
+                        <tbody id="purchase-order">
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button id="placeOrder" class="btn btn-info btn-sm" data-dismiss="modal">Place the Order</button>
+                    <button id="place-order" class="btn btn-info btn-sm" data-dismiss="modal">Place the Order</button>
                 </div>
             </div>
         </div>
