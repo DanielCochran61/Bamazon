@@ -78,7 +78,7 @@ $(document).ready(function () {
     const displayMessage = function () {
         $('#po-results').removeClass('alert alert-danger');
         $('#po-results').addClass('alert alert-info');
-        $('#po-results').text(`Thank you for your order! Your order total is $${totalPrice}!`);
+        $('#po-results').text(`Thank you! Your order total is $${totalPrice}!`);
         resetPurchaseOrder();
     }
     const validateOrder = function (e) {
