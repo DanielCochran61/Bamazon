@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const db = require('./models');
-const seed = require('./seeds/db-seeds');
+//const seed = require('./seeds/db-seeds');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
